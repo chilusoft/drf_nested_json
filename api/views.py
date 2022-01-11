@@ -19,7 +19,7 @@ def student_data_list(request):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PATCH', 'DELETE'])
 def student_data_detail(request, pk):
     try:
         student_data = StudentData.objects.get(pk=pk)
@@ -29,7 +29,7 @@ def student_data_detail(request, pk):
     if request.method == 'GET':
         serializer = StudentDataSerializer(student_data)
         return Response(serializer.data)
-    elif request.method == 'PUT':
+    elif request.method == 'PATCH':
         serializer = StudentDataSerializer(student_data, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -52,7 +52,7 @@ def student_result_list(request):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PATCH', 'DELETE'])
 def student_result_detail(request, pk):
     try:
         student_result = StudentResult.objects.get(pk=pk)
@@ -62,7 +62,7 @@ def student_result_detail(request, pk):
     if request.method == 'GET':
         serializer = StudentResultSerializer(student_result)
         return Response(serializer.data)
-    elif request.method == 'PUT':
+    elif request.method == 'PATCH':
         serializer = StudentResultSerializer(student_result, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -87,7 +87,7 @@ def student_data_result_list(request):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PATCH', 'DELETE'])
 def student_data_result_detail(request, pk):
     try:
         student_data = StudentData.objects.get(pk=pk)
@@ -97,7 +97,7 @@ def student_data_result_detail(request, pk):
     if request.method == 'GET':
         serializer = StudentDataSerializer(student_data)
         return Response(serializer.data)
-    elif request.method == 'PUT':
+    elif request.method == 'PATCH':
         serializer = StudentDataSerializer(student_data, data=request.data)
         if serializer.is_valid():
             serializer.save()
